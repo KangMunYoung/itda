@@ -12,14 +12,19 @@ import com.finalproject.itda.vo.MemberVO;
 public interface AdminDAO {
 
 
-	@Select("select m_seq,m_username,m_nickname,m_tel,m_content from member123 order by m_seq")
+	@Select("select  m.m_seq,m.m_userid,m.m_username,m.m_nickname, m.m_tel, to_char(m_regdate,'YY-MM-DD') m_regdate, count(b.board_seq) board_seq,s.m_state from memberbase m full outer join  boardbase b on m.m_seq = b.m_seq join member_rank mr on m.m_rank = mr.m_rank join states s on m.m_statecode = s.m_statecode group by m.m_seq, m.m_userid, m.m_username, m.m_nickname, m.m_tel, to_char(m_regdate,'YY-MM-DD'), s.m_state")
 	public List<MemberVO> MemberList();
 
-	@Select("select m_seq,m_username,m_nickname,m_tel,m_content from member123 where m_seq=#{m_seq}")
+	@Select("select m.m_seq,m.m_userid ,m.m_nickname ,to_char(m.m_regdate,'YY-MM-DD') m_regdate, s.m_state, r.m_name,m.m_rank,m.m_statecode from memberbase m  join states s on m.m_statecode = s.m_statecode join member_rank r on m.m_rank = r.m_rank where m.m_seq=#{m_seq}")
 	public MemberVO MemberView(MemberVO vo);      
 																												//난중에 seq퀀스로 바꿔야됨
-	@Insert("insert into member123(m_seq, m_username,m_userpwd,m_nickname,m_email,m_tel,m_addr,m_bith) values (6,#{m_username},#{m_userpwd},#{m_nickname},#{m_email},#{m_tel},#{m_addr},#{m_bith})")
+	@Insert("insert into MEMBERBASE(m_seq,m_userid, m_username,m_userpwd,m_nickname,m_email,m_tel,m_addr,m_brith,m_gender) "
+			+ "values (6,#{m_userid},#{m_username},#{m_userpwd},#{m_nickname},#{m_email},#{m_tel},#{m_addr},#{m_brith},1)")
 	public int MemberInsert(MemberVO vo);
 	
-
+	@Update("")
+	public int boardUpdate(MemberVO vo);
 }
+
+
+

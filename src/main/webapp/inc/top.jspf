@@ -8,9 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
 
-    <link rel="stylesheet" type="text/css" href="css/mainStyle.css?a" />
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script defer type="text/javascript" src="js/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/mainStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="css/adminTop.css"/>
+    <link rel="stylesheet" type="text/css" href="css/adminModal.css"/>
+    <link rel="stylesheet" type="text/css" href="css/admin.css" />
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <script type="text/javascript" src="js/mainScript.js"></script>
+   <script type="text/javascript" src="js/admin.js"></script>
+
   </head>
 
   <body>
@@ -19,7 +27,7 @@
       <header class="mainHeader">
         <ul class="topMenu">
           <li>
-            <img src="/img/itdaLogo.png" alt="" onclick="location.href='#'" />
+            <img src="img/itdaLogo.png" alt="" onclick="location.href='/'" />
           </li>
           <li><a href="#">추천게시판</a></li>
           <li><a href="#">매칭게시판</a></li>
@@ -28,11 +36,11 @@
           <li><a href="#">Q&A</a></li>
           <li><a href="#">베스트</a></li>
           <li><a href="#">인증</a></li>
-          <li><a href="/itda/test">test중인파일</a></li>
+            <li><a href="/itda/admin">test</a></li>
         </ul>
         <div class="topMenu_r">
           <div class="loginBtnBox">
-            <a href="#" class="loginBtn" id="loginBtn">로그인 </a>
+            <a href="/itda/login" class="loginBtn" id="loginBtn">로그인 </a>
             <a href="#" class="joinBtn" id="joinBtn">회원가입</a>
           </div>
         </div>

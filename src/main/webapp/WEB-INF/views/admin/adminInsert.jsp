@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -17,12 +16,18 @@
         <div style=" width:50%; height: 100%; float: left;">
           <form method="post" action="/itda/adminInsertOk">
             <div>
-              <label class="Modallabel">이름:</label>
-              <input class="ModalInput" type='text' name='m_username' id='m_username' placeholder="이름"/>
+              <label class="Modallabel">아아디:</label>
+              <input class="ModalInput" type='text' name='m_userid' placeholder="아아디"/>
             </div>
-
             <br>
-
+            
+             <div>
+              <label class="Modallabel">아아디:</label>
+              <input class="ModalInput" type='text' name='m_username' placeholder="이름"/>
+            </div>
+            <br>
+            
+            
             <div>
               <label class="Modallabel">비밀번호:</label>
               <input class="ModalInput" type='password' name='m_userpwd' id='m_userpwd' placeholder="비밀번호"/>
@@ -57,10 +62,10 @@
 
             <div>
               <label class="Modallabel"> 생일:</label>
-              <input class="ModalInput" type='date' name='m_bith' placeholder="생일"/>
+              <input class="ModalInput" type='date' name='m_brith' placeholder="생일"/>
             </div>
             <br>
-
+            
             <div>
               <button class="submitbutton" type="submit"><a>회원가입</a></button>
             </div>

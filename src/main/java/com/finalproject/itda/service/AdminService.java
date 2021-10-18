@@ -13,5 +13,6 @@ public interface AdminService {
 	
 	public int MemberInsert(MemberVO vo);
 	
+//	public int boardUpdate(MemberVO vo);
 	
 }

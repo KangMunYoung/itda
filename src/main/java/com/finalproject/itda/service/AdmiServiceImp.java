@@ -35,7 +35,13 @@ public class AdmiServiceImp implements AdminService {
 	public int MemberInsert(MemberVO vo) {
 		return adminDAO.MemberInsert(vo);
 	}
-	
+//
+//	@Override
+//	public int boardUpdate(MemberVO vo) {
+//		// TODO Auto-generated method stub
+//		return adminDAO.MemberUpdate(vo);
+//	}
+//	
 	
 
 
