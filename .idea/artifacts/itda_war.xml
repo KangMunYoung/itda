@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="itda-1.0.0-BUILD-SNAPSHOT.war">
+    <root id="archive" name="${project.artifactId}-${project.version}.war">
       <element id="artifact" artifact-name="itda:war exploded" />
     </root>
   </artifact>
