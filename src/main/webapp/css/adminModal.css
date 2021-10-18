@@ -153,11 +153,11 @@ label
 }
 
 .AdminAMember { /*모달창*/
-   position: relative;
-   margin: 100px auto;
-   width: 450px;
-   padding: 20px;
-   text-align: center;
+  position: relative;
+  margin: 100px auto;
+  width: 450px;
+  padding: 20px;
+  text-align: center;
   border-radius: 10px;
   border: 2px solid #666;
   overflow-y: auto;
