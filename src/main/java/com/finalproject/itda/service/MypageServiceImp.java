@@ -10,6 +10,7 @@ import com.finalproject.itda.dao.MypageDAO;
 import com.finalproject.itda.vo.BoardCommentVO;
 import com.finalproject.itda.vo.BoardVO;
 import com.finalproject.itda.vo.MemberBaseVO;
+import com.finalproject.itda.vo.MessageSendVO;
 import com.finalproject.itda.vo.QuestionVO;
 
 @Service
@@ -26,7 +27,7 @@ public class MypageServiceImp implements MypageService {
 	public List<BoardVO> mypagePostList(MemberBaseVO vo) {
 		return  mypageDao.mypagePostList(vo);
 	}
-	//내가쓴댓글 뿌리고 시작
+	//내가 쓴 댓글 뿌리고 시작
 	@Override
 	public List<BoardCommentVO> mypageReplyList(MemberBaseVO vo) {
 		return mypageDao.myReplyList(vo);
@@ -45,5 +46,14 @@ public class MypageServiceImp implements MypageService {
 	
 	public List<QuestionVO> MypageQnaList(int seq) {
 		return  mypageDao.MypageQnaList(seq);
+	}
+	//쪽지함 
+	@Override
+	public List<MessageSendVO> mypageMsg(MessageSendVO msVo) {
+		return mypageDao.mypageMsg(msVo); //public List<BoardVO> mypageMsg(MessageSendVO msVo);
+	}
+	@Override
+	public List<MessageSendVO> mypageMsgsend(MessageSendVO msVo) {
+		return mypageDao.mypageMsgsend(msVo);
 	}
 }

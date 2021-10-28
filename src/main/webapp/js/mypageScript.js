@@ -107,25 +107,4 @@ $(document).ready(function(){
 		} 
 	});
 	
-	
-	//제목선택시 쪽지모달열기	
-		$('.msgListContent li:nth-of-type(4n+3)').click(function () {
-	 		$('.msgDataInputModal').css('display', 'block');
-	   		$('.readMsgModal').css('display', 'block');
-	    });
-	    
-	    //(쪽지모달)확인버튼
-	    $('#checkMsg').click(function () {
-	        $('.readMsgModal').css('display', 'none');  
-	    });  
-	    //(쪽지모달)답장하기
-		$('#answerMsg').click(function () {
-			$('.msgDataInputModal').css('display', 'none');
-			$('.mailDataInputModal').css('display', 'block');
-	        $('.mailJoinModal').css('display', 'block');
-	    });       
-	    //x버튼
-	    $('.close3').click(function () {
-	        $('.readMsgModal').css('display', 'none');  
-	    }); 
-});
+});	

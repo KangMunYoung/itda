@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import com.finalproject.itda.vo.BoardCommentVO;
 import com.finalproject.itda.vo.BoardVO;
 import com.finalproject.itda.vo.MemberBaseVO;
+import com.finalproject.itda.vo.MessageSendVO;
 import com.finalproject.itda.vo.QuestionVO;
 
 public interface MypageDAO {
@@ -47,7 +48,19 @@ public interface MypageDAO {
 			+ " values(q_number_seq.nextval, #{q_category}, #{q_title}, #{m_seq})")
 	public int QuestionInsert(QuestionVO quesVo);
 	
+	//받은쪽지함 
+	@Select("select m_nickname, msg_content, to_char(msg_writedate, 'YYYY-MM-DD') msg_writedate from messagesend ms join memberbase mb on ms.m_seq2= mb.m_seq where m_seq1=${m_seq}")
+	public List<MessageSendVO> mypageMsg(MessageSendVO msVo);
 	
 	
-
+	//select mb.m_nickname, ms.m_seq1, ms.m_seq2, ms.msg_content, to_char(ms.msg_writedate, 'YYYY-MM-DD') msg_writedate from messagesend ms join memberbase mb on ms.m_seq1= mb.m_seq where m_seq1=(select m_seq from memberbase where m_seq=${m_seq})")
+//	@Select("select ms.m_seq2, ms.msg_content, to_char(ms.msg_writedate, 'YYYY-MM-DD') msg_writedate from messagesend ms join memberbase mb on ms.m_seq1= mb.m_seq where m_seq1=(select m_seq from memberbase where m_seq=${m_seq})")
+	//보낸쪽지함
+	 @Select("select m_nickname, msg_content, to_char(msg_writedate, 'YYYY-MM-DD') msg_writedate "
+	 		+ " from messagesend ms join memberbase mb "
+	 		+ " on ms.m_seq1= mb.m_seq where m_seq2=${m_seq}")
+	 public List<MessageSendVO> mypageMsgsend(MessageSendVO msVo);
+	 
+	 
+	 
 }

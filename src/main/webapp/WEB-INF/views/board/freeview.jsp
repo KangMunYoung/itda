@@ -52,7 +52,7 @@ a{
 
 .freeBoardTop>div:nth-child(1){
    text-align: center;
-    padding: 80px 0;
+    padding: 0;
     line-height:2;
 
    
@@ -147,10 +147,12 @@ a{
 }
 /*내용 들어가는 곳*/
 .freeContentView{
-padding: 22px 0;
+	padding: 22px 0;
     margin: 0;
     word-break: normal;
     word-wrap: break-word;
+    min-height : 400px;
+    
 }
 /*댓글 들어가는 곳*/
 .freeTextarea{

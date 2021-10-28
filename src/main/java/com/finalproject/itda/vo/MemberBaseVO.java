@@ -22,6 +22,9 @@ public class MemberBaseVO {
 	private String m_img;
 	private String b_note;//차단사유
 	private String msg_content; // 쪽지내용
+	private String m_seq1; //쪽지 보낸사람 회원번호
+	private String m_seq2; //쪽지 받는사람 회원번호 
+	
 	
 //	조인용 vo
 	private String m_content;

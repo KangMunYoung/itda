@@ -590,8 +590,8 @@ input[name=msgDelBtn] {
 
 #receiveList, #sendList{
 	width:100%;
-	overflow:auto;
-	display:none;
+	/* overflow:auto; */
+	/* display:none; */
 }
 #receiveMsg{
 	font-weight:bold;
@@ -634,7 +634,7 @@ input[name=msgDelBtn] {
 }
 
 .msgListContent>li:nth-of-type(4n+3) {
-	width: 55%;
+	width:55%;
 	float:left;
 }
 

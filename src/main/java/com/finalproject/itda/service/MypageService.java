@@ -5,6 +5,7 @@ import java.util.List;
 import com.finalproject.itda.vo.BoardCommentVO;
 import com.finalproject.itda.vo.BoardVO;
 import com.finalproject.itda.vo.MemberBaseVO;
+import com.finalproject.itda.vo.MessageSendVO;
 import com.finalproject.itda.vo.QuestionVO;
 
 public interface MypageService {
@@ -26,4 +27,9 @@ public interface MypageService {
 	
 	public List<QuestionVO> MypageQnaList(int seq);
 	
+	//보낸쪽지함
+	public List<MessageSendVO> mypageMsg(MessageSendVO msVo);
+	
+	//받은쪽지함
+	public List<MessageSendVO> mypageMsgsend(MessageSendVO msVo);
 }

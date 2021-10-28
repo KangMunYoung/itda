@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -10,7 +11,7 @@
 	<div id='msgTab'>
 		<ul>
 			<li id='receiveMsg'>받은쪽지함</li>
-			<li id='sendMsg'>보낸쪽지함</li>
+			<li id='sendMsg'><a href="/itda/mypageMsgsend">보낸쪽지함</a></li>
 		</ul>
 	</div>
 	<div id='msgListDiv'>
@@ -22,20 +23,16 @@
 					<li>내용</li>
 					<li>보낸날짜</li>
 				</ul>
-				<ul class='msgListContent'>
-					<li><input type='checkbox' name='receiveChk' /></li>
-					<li id='userid'>캠핑요정(camping)</li>
-					<li>안녕하세요 장터에 올려둔 텐트보고 연락드립니다ㅇㅅㅇ</li>
-					<li>2021-05-16 18:23</li>
-					<li><input type='checkbox' name='receiveChk' /></li>
-					<li id='userid'>캠핑요정(camping)</li>
-					<li>안녕하세요 장터에 올려둔 텐트보고 연락드립니다ㅇㅅㅇ</li>
-					<li>2021-05-16 18:23</li>
-					<li><input type='checkbox' name='receiveChk' /></li>
-					<li id='userid'>캠핑요정(camping)</li>
-					<li>안녕하세요 장터에 올려둔 텐트보고 연락드립니다ㅇㅅㅇ</li>
-					<li>2021-05-16 18:23</li>
-				</ul>
+				
+			 	<c:forEach var="msVo" items="${list}">
+					<ul class='msgListContent'>
+						<li><input type='checkbox' name='receiveChk' /></li>
+						<li id='usernickname' name="m_nickname">${msVo.m_nickname}</li>
+						<li>${msVo.msg_content}</li>
+						<li>${msVo.msg_writedate}</li>
+					</ul>
+				</c:forEach>	 
+					
 			</div>
 			<div class='msgChkAndDel'>
 				<div>
@@ -61,30 +58,23 @@
 		<div id='sendList'>
 			<div class='msgList'>
 				<ul class='msgListTitle'>
-					<li>&nbsp</li>
+				 	<li>&nbsp;</li>
 					<li>수신자</li>
 					<li>내용</li>
 					<li>보낸날짜</li>
 				</ul>
+				
+			<c:forEach var="msVo" items="${list}">
 				<ul class='msgListContent'>
-					<li><input type='checkbox' name='sendChk' /></li>
-					<li id='userid'>캠핑요정(camping)</li>
-					<li>캠핑자리남았나요</li>
-					<li>2021-05-16 18:23</li>
-					<li><input type='checkbox' name='sendChk' /></li>
-					<li id='userid'>캠핑요정(camping)</li>
-					<li>캠핑자리남았나요</li>
-					<li>2021-05-16 18:23</li>
-					<li><input type='checkbox' name='sendChk' /></li>
-					<li id='userid'>캠핑요정(camping)</li>
-					<li>캠핑자리남았나요</li>
-					<li>2021-05-16 18:23</li>
-					<li><input type='checkbox' name='sendChk' /></li>
-					<li id='userid'>캠핑요정(camping)</li>
-					<li>캠핑자리남았나요</li>
-					<li>2021-05-16 18:23</li>
+				 	<li><input type='checkbox' name='sendChk' /></li> 
+					<li id="usernick" name="m_nickname">${msVo.m_nickname}</li>
+					<li>${msVo.msg_content}<li>
+					<li>${msVo.msg_writedate}</li>
 				</ul>
+			</c:forEach>	
 			</div>
+			
+			
 			<div class='msgChkAndDel'>
 				<div>
 					<label><input type='checkbox' name='sendMsgAllCheck'
@@ -93,7 +83,8 @@
 				<div>
 					<input type='button' name='msgDelBtn' value='✘ 삭제' />
 				</div>
-			</div>
+			</div> 
+			
 			<div class='page'>
 				<ul>
 					<li><a href='#'><</a></li>
@@ -106,6 +97,9 @@
 				</ul>
 			</div>
 		</div>
+		
+		
+		
 	</div>
 	<!-- 쪽지확인 모달창 -->
 	<div class="readMsgModal" id="readMsgModal">
@@ -119,8 +113,7 @@
 					<ul class="msgInfo">
 						<li style="text-align: left; padding-left: 25px;">받는사람 &nbsp;
 							: &nbsp; ${userid}</li>
-						<li
-							style="text-align: left; padding-left: 25px; padding-top: 10px;">내용</li>
+						<li style="text-align: left; padding-left: 25px; padding-top: 10px;">내용</li>
 						<li>Uluru is also often referred to as a monolith, although
 							this is an ambiguous term that is generally avoided by
 							geologists. The remarkable feature of Uluru is its homogeneity
@@ -143,8 +136,7 @@
 
 	<!-- 쪽지답장하기 모달창 -->
 	<div class="mailJoinModal" id="mailJoinModal">
-		<article class="mailModalContent mailDataInputModal style="
-			box-shadow: 10px 10px 5pxlightgrey;" >
+		<article class="mailModalContent mailDataInputModal style="box-shadow: 10px 10px 5px lightgrey;" >
 			<div>
 				<form method='post' action=''>
 					<h4>🍊 쪽지 보내기</h4>

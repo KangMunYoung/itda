@@ -12,14 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.finalproject.itda.service.MypageService;
 import com.finalproject.itda.vo.MemberBaseVO;
+import com.finalproject.itda.vo.MessageSendVO;
 import com.finalproject.itda.vo.QuestionVO;
-
 
 @Controller
 public class MypageController {
 	@Inject
 	MypageService mypageService;
-	
 	
 	@RequestMapping(value="/mypage")
 	public String mypage() {
@@ -76,7 +75,6 @@ public class MypageController {
 	}
 	//1:1문의--------------------------------------------------------------------------------------------
 	
-	
 	@RequestMapping("/mypageQnA")
 	public String mypageQnA(Model model,HttpSession session)
 	{
@@ -86,7 +84,6 @@ public class MypageController {
 		model.addAttribute("list", mypageService.MypageQnaList(seq));
 		return "mypage/mypage07Question";
 	}
-	
 	
 	/*
 	 * @RequestMapping(value="/mypageQnA") public String mypageQnA(Model
@@ -113,8 +110,23 @@ public class MypageController {
 	}
 	
 	//쪽지함--------------------------------------------------------------------------------------------
-	@RequestMapping(value="/mypageMsg")
-	public String mypageMsg() {
-		return "mypage/mypage08Message";
+	//보낸쪽지함 
+	@RequestMapping(value="/mypageMsgsend")
+	public ModelAndView mypageMsg(MessageSendVO msVo, HttpSession ses) {
+		ModelAndView mav = new ModelAndView();
+		msVo.setM_seq((Integer)ses.getAttribute("logseq"));
+		mav.addObject("list", mypageService.mypageMsg(msVo));
+		mav.setViewName("mypage/mypage08Message");
+		return mav;
 	}
+	//받은쪽지함
+	@RequestMapping(value="/mypageMsg")
+	public ModelAndView mypageMsgsend(MessageSendVO msVo, HttpSession ses) {
+		ModelAndView mav = new ModelAndView();
+		msVo.setM_seq((Integer)ses.getAttribute("logseq"));
+		mav.addObject("list", mypageService.mypageMsgsend(msVo));
+		mav.setViewName("mypage/mypage08Message");
+		return mav;
+	}
+	
 }
