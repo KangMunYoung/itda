@@ -110,8 +110,8 @@ public interface MatchingDAO {
 	// 매칭 글보기
 	@Select({" <script> ",
 			" select * from ",
-			" (select a.board_seq, mc_seq, a.m_seq, m_userid, m_nickname, m_info, nvl(m_img,'img/user.png') m_img, board_subject, board_writedate, board_hit, b_goodhit, board_call, b_content, ",
-			"	mc_max, mc_where, mc_state, to_char(mc_start_date,'YYYY-MM-DD HH24:MI') mc_start_date, to_char(mc_end_date,'YYYY-MM-DD HH24:MI') mc_end_date, board_select,",
+			" (select a.board_seq, mc_seq, a.m_seq, m_userid, m_nickname, m_info, nvl(m_img,'img/user.png') m_img, board_subject, board_writedate, board_hit, b_goodhit, board_call, b_content, board_code, ",
+			" mc_max, mc_where, mc_state, to_char(mc_start_date,'YYYY-MM-DD HH24:MI') mc_start_date, to_char(mc_end_date,'YYYY-MM-DD HH24:MI') mc_end_date, board_select,",
 			" (select count(board_seq) from board_comment e where a.board_seq=e.board_seq) replyCount, ",
 			" lag(a.board_seq, 1) over(order by a.board_seq) board_prev_seq, ",
 			" lag(board_subject, 1, '이전글이 없습니다.') over(order by a.board_seq) board_prev_subject, ",
@@ -137,7 +137,7 @@ public interface MatchingDAO {
 	
 	// 캘린더에 들어갈 값
 	@Select({" <script> ",
-			"select b.board_seq, to_char(mc_start_date,'YYYY-MM-DD') \"start\", ",
+			" select b.board_seq, to_char(mc_start_date,'YYYY-MM-DD') \"start\", ",
 			" board_subject \"title\" from boardbase b inner join mc_table m on b.board_seq=m.board_seq",
 			" where board_block in (0, 2)  ",
 			" </script>"})

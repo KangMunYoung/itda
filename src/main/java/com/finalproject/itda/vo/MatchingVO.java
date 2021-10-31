@@ -39,6 +39,7 @@ public class MatchingVO {
 	private int mc_seq;
 	private int matchingCount;
 	private int replyCount;
+	private int board_code;
 	
 	private String tags[];
 	private String prevTags[];
@@ -297,5 +298,11 @@ public class MatchingVO {
 	}
 	public void setM_img(String m_img) {
 		this.m_img = m_img;
+	}
+	public int getBoard_code() {
+		return board_code;
+	}
+	public void setBoard_code(int board_code) {
+		this.board_code = board_code;
 	}
 }
