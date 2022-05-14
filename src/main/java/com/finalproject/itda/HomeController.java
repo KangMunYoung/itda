@@ -14,15 +14,15 @@ import com.finalproject.itda.service.RecommendService;
 import com.finalproject.itda.vo.MatchingPagingVO;
 import com.finalproject.itda.vo.RecommendPagingVO;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class HomeController {
-	@Inject
-	RecommendService recommendService;
-	@Inject
-	MatchingService matchingService;
-	
-	@Inject
-	InjeungService injeungService;
+
+    private final RecommendService recommendService;
+    private final MatchingService matchingService;
+    private final InjeungService injeungService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
@@ -30,9 +30,6 @@ public class HomeController {
 		
 		MatchingPagingVO mpv = new MatchingPagingVO();
 		RecommendPagingVO pVo = new RecommendPagingVO();
-		mav.addObject("list_RC", recommendService.recommendList(pVo));
-		mav.addObject("list_MC", matchingService.matchingList(mpv));
-		mav.addObject("list_ij", injeungService.injeungBoardList());
 		mav.setViewName("/index");
 		
 		return mav;
